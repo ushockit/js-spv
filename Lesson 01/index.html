@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+        // -= Объявление переменных =-
+        /*
+            var, let, const
+        */
+
+        /*
+        var a;
+
+        a = 10;
+
+        let b = 10;
+        b = true;
+        b = 5.4;
+        console.log('a = ', a);*/
+
+
+        /*
+            String,
+            Number,
+            Boolean
+            Array
+            Object
+
+            undefined
+            NaN
+            null 
+        */
+
+        // let a;
+        // console.log('a = ', a);
+
+        // if (a == undefined) {
+        //     console.log('YES');
+        // }
+       
+
+        // let a = 10;
+        // let b = '10';
+
+        // console.log('type a = ', typeof a);
+        // console.log('type b = ', typeof b);
+
+        // проверяются только значения
+        // if (a == b) {
+        //     console.log('equals');
+        // }
+        // else {
+        //     console.log('not equals');
+        // }
+
+        // проверка значений + типы данных
+        // if (a === b) {
+        //     console.log('equals');
+        // }
+        // else {
+        //     console.log('not equals');
+        // }
+
+        /*let a = 10;
+        let b = 'hello';
+        let c = a / b;
+
+        // NaN
+        console.log('c = ', c);*/
+
+        /*let a = '10';
+        let b = 20;
+        let c = b + Number(a);
+
+        console.log('c = ', c);*/
+
+        // Диалоговые окна
+        /*
+            alert, prompt, confirm
+        */
+
+        // информационное сообщение
+        //alert('Hello world');
+
+        // окно подверждения. При нажатии "Ок" возращает true, в любой другом случае false
+        /*let result = confirm('Do you want a coffee?');
+        console.log('Result = ', result);*/
+
+
+        // окно ввода информации
+        /*let text = prompt('Enter your name', 'This is default value');
+        console.log('text = ', text);*/
+
+        // объявление функции
+        function someFunctionName(a, b) {
+            return a + b;
+        }
+
+        let sayHi = function() {
+
+            console.log('sayHi function');
+            alert('Hi');
+        };
+
+        // sayHi();
+
+
+        // console.log(someFunctionName(10, 20));
+
+
+        // for (let i = 0; i < 20; i++) {
+        //     console.log(`i = ${i + 1}`);
+        //     debugger;
+        // }
+
+        function func(...args) {
+            // for (let i = 0; i < args.length; i++) {
+            //     console.log(args[i]);
+            // }
+
+            args.forEach((item) => {
+                console.log(item);
+            });
+
+            // выборка элементов по условию
+            // let result = args.filter((n) => n % 20 === 0);
+            // console.log('result', result);
+
+            // трансформацию элементов
+            // let result = args.map((item) => {
+            //     return item * 2;
+            // });
+            // console.log('result', result);
+        }
+
+
+        func(10, 20, 30, 40);
+
+
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>
