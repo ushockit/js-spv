@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // let i = 0;
+        // let start = Date.now();
+        // function someTask() {
+        //     // делаем тяжёлую работу
+        //     for (let j = 0; j < 1e9; j++) {
+        //         i++;
+        //     }
+
+        //     alert("Done in " + (Date.now() - start) + 'ms');
+        // }
+
+        // someTask();
+
+        // -= setInterval / setTimeout =-
+
+        // setInterval(() => {
+        //     console.log('Hello!');
+        // }, 1000);
+        // setInterval(() => {
+        //     console.log('World!');
+        // }, 500);
+
+        // let id = setTimeout(() => {
+        //     console.log('Ready');
+        // }, 2500);
+
+        // setTimeout(() => {
+        //     // отмена работы timeout clearTimeout
+        //     clearTimeout(id);
+        // }, 2000);
+
+        // let counter = 1;
+        // let id = setInterval(() => {
+        //     let str = '';
+        //     for(let i = 0; i < counter; i++) {
+        //         str += i;
+        //     }
+        //     console.log(str);
+        //     counter++;
+        // }, 1000);
+
+
+        // setTimeout(() => {
+        //     clearInterval(id);
+        // }, 10_000);
+
+
+
+        // let i = 0;
+
+        // let start = Date.now();
+
+        // function count() {
+
+        //     // перенесём планирование очередного вызова в начало
+        //     if (i < 1e9 - 1e6) {
+        //         setTimeout(count); // запланировать новый вызов
+        //     }
+
+        //     do {
+        //         i++;
+        //     } while (i % 1e6 != 0);
+
+        //     if (i == 1e9) {
+        //         alert("Done in " + (Date.now() - start) + 'ms');
+        //     }
+
+        // }
+
+        // count();
+        // setInterval(() => {
+        //     console.log('Hello');
+        // }, 1000);
+
+
+        // let obj = {
+        //     name: 'Vasya',
+        //     age: 20,
+        //     sayHi: function () {
+        //         console.log(`${this.name}, Hi!`);
+        //     }
+        // };
+        // console.log(typeof obj);
+        // obj.sayHi();
+
+        // obj.email = 'vasya@gmail.com';
+
+        // console.log(obj);
+
+        // delete obj.email;
+        // console.log(obj);
+
+        let obj = {
+            value1: {
+                a: 10,
+                b: 15
+            },
+            value2: {
+                a: 5,
+                b: 20
+            },
+            value3: {
+                a: 12,
+                b: 20
+            }
+        };
+
+        let value = {
+            
+        };
+
+        if (value?.person?.name) {
+            console.log('exists');
+        }
+
+        //if (value.name)
+        if ('name' in value) {
+
+        }
+
+
+        
+
+        // console.log(obj);
+
+        // console.log('Keys', Object.keys(obj));
+        // console.log('Values', Object.entries(obj))
+
+        // console.log(obj['value1']);
+
+        let arr = [];
+
+        console.log(arr);
+
+        // добавление в массив
+        arr.push(10);
+        arr.push(20, 30, 40);
+        console.log(arr);
+
+        // удаление из массива
+        arr.pop();
+        console.log(arr);
+
+        let tmp = [100, 200, 300];
+        arr = [...arr, ...tmp];
+        console.log(arr);
+
+
+        let tmp2 = [];
+        for(let i = 0; i < 10; i++) {
+            tmp2.push(i + 1);
+        }
+
+        let result = tmp2.join('');
+        console.log(result);
+
+
+        let path = 'https://google.com';
+        console.log([path, 'point'].join('/'));
+
+
+        // удаление эл-та с начала
+        arr.shift();
+        console.log(arr);
+
+        // добавление в начало
+        arr.unshift(1000);
+        console.log(arr);
+
+        // получение подмассива
+        let subArr = arr.slice(0, 2);
+        console.log(subArr);
+
+        // удаление заданного кол-во эл-ов в заданной позиции
+        // 0 - позиция
+        // 1 - кол-во удаляемых эл-ов
+        arr.splice(0, 1)
+        console.log(arr);
+
+
+        // вставка нового эл-та
+        arr.splice(0, 0, 2000);
+        arr.splice(3, 0, 5000);
+        console.log(arr);
+
+        // замена
+        arr.splice(3, 2, 10_000);
+        console.log(arr);
+
+
+        // сортировка
+        arr.sort((a, b) => a - b);
+
+        console.log(arr);
+        
+
+
+    </script>
+</body>
+
+</html>
