@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {margin: 0;}
+        #block {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+        #btn-toggle {
+
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="block"></div>
+    <button id="btn-toggle">Toggle</button>
+    <script>
+        const UI = {
+            block: document.getElementById('block'),
+            btnToggle: document.getElementById('btn-toggle')
+        };
+
+        let isShowBlock = true;
+
+        UI.btnToggle.onclick = function() {
+            // UI.block.style.display = isShowBlock ? 'none' : 'block';
+            // isShowBlock = !isShowBlock;
+            UI.block.classList.toggle('hidden');
+        };
+
+
+        const blockPosition = {
+            top: 0,
+            left: 0
+        }
+        let fromCoords;
+
+        document.onmouseup = function(e) {
+            console.log('MouseUp');
+            blockPosition.left += e.x - fromCoords.x;
+            blockPosition.top += e.y - fromCoords.y;
+
+            updateBlockPosition();
+        };
+        document.onmousedown = function(e) {
+            console.log('MouseDown');
+            //console.log(e);
+            fromCoords = {
+                x: e.x,
+                y: e.y
+            };
+        };
+
+        function updateBlockPosition() {
+            UI.block.style.left = `${blockPosition.left}px`;
+            UI.block.style.top = `${blockPosition.top}px`;
+        }
+    </script>
+</body>
+</html>

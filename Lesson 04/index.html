@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 5000px;
+        }
+        #news {
+            margin: 0 auto;
+            box-sizing: border-box;
+            border: 1px solid rgba(0,0,0,.1);
+            box-shadow: 0 0 15px rgba(0,0,0,.3);
+            min-width: 300px;
+            height: 500px;
+            padding: 15px;
+        }
+        .news-item {
+            box-sizing: border-box;
+            height: 50px;
+            box-shadow: 0 0 15px rgba(255,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="news">
+        <!-- <div>Hello</div> -->
+    </div>
+
+    <button onclick="onBtnAddNewsClick()">Add news</button>
+
+    <div id="coords">
+        X: <span id="coord-x"></span>
+        Y: <span id="coord-y"></span>
+    </div>
+
+    <input class="input-text" type="text" placeholder="Enter your text">
+
+    <script>
+        // document.getElementById
+        // document.getElementsByClassName
+        // document.getElementsByName
+        // document.getElementsByTagName
+        // document.querySelector
+        // document.querySelectorAll
+        const UI = {
+            coords: {
+                x: document.querySelector('#coord-x'),
+                y: document.querySelector('#coord-y')
+            },
+            inputText: document.querySelector('.input-text')
+        };
+
+        let news = document.getElementById('news');
+        console.log(news);
+        console.dir(news);
+        news.style.color = 'red';
+
+
+        // подписка на событие клика по блоку 'news'
+        news.onclick = function(e) {
+            console.log('click');
+            console.log(e);
+        };
+
+        news.addEventListener('click', function(e) {
+            console.log('Click from #news');
+        });
+
+
+        function onBtnAddNewsClick() {
+            // динамическое солздание html элемента
+            let newsBlock = document.createElement('div')
+            newsBlock.classList.add('news-item');
+            newsBlock.innerText = 'Dynamic block';
+
+            // добавление нового элемента к блоку news
+            news.appendChild(newsBlock);
+        }
+
+        // подписка на событие прокрутки страницы
+        window.addEventListener('scroll', (e) => {
+            // console.dir(e.target);
+        });
+
+        // подписка на событие передвижение мыши по документу
+        document.onmousemove = function(e) {
+            // console.log(e);
+            UI.coords.x.innerText = e.x;
+            UI.coords.y.innerText = e.y;
+        };
+        
+        window.onload = function() {
+            console.log('документ загружен');
+            UI.inputText.value = 'документ загружен';
+        };
+
+        // срабатывает при потере фокуса
+        UI.inputText.onchange = function() {
+            console.log('onchange')
+        };
+
+        UI.inputText.onkeydown = function(e) {
+            console.log(e);
+        };
+
+
+        document.onkeydown = function(e) {
+            console.log('onkeydown');
+        };
+
+
+
+
+    </script>
+</body>
+</html>
