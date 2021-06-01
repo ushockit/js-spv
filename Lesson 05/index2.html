@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #block {
+            width: 100px;
+            height: 100px;
+            background-color: dodgerblue;
+        }
+
+        #container {
+            width: 400px;
+            height: 400px;
+            background-color: firebrick;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="block" draggable="true" ondragstart="drag(event)"></div>
+    <div id="container" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <script>
+
+        const UI = {
+            block: document.getElementById('block')
+        };
+
+        function drag(e) {
+            e.dataTransfer.setData("text", e.target.id);
+            console.log(e.dataTransfer);
+        }
+
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+    </script>
+</body>
+
+</html>

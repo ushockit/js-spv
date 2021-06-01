@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: gray;
+        }
+        .parent {
+            width: 300px;
+            height: 300px;
+            background-color: deepskyblue;
+        }
+
+        .block {
+            width: 100px;
+            height: 100px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="parent">
+        <div class="block red"></div>
+        <div class="block green"></div>
+        <div class="block blue"></div>
+    </div>
+    <button id="btn">Button</button> -->
+
+    <script>
+        const UI = {
+            parent: document.querySelector('.parent'),
+            blocks: document.querySelectorAll('.block'),
+            btn: document.getElementById('btn')
+        };
+        // document.onclick = function() {
+        //     console.log('Document click');
+        // };
+        // UI.parent.onclick = function() {
+        //     console.log('Click parent');
+        // };
+        // UI.blocks.forEach(block => {
+        //     block.onclick = function(e) {
+        //         // запрет распространения события к родителю
+        //         e.stopPropagation();
+        //         console.log('Block click');
+        //     };
+        // });
+
+        // document.addEventListener('click', function() {
+        //     console.log('Document click');
+        // });
+        // document.onclick = function(e) {
+        //     console.log('Document click');
+        // };
+        // UI.parent.addEventListener('click', function() {
+        //     console.log('Click parent');
+        // }, true);
+        // UI.blocks.forEach(block => {
+        //     block.addEventListener('click', function(e) {
+        //         // запрет распространения события к родителю
+        //         //e.stopPropagation();
+        //         console.log('Block click');
+        //     }, true);
+        // });
+
+        // UI.btn.onclick = function onBtnClick(e) {
+        //     e.stopPropagation();
+        //     console.log('Button click');
+        //     console.dir(document);
+        //     document.onclick.call(document, document)
+        // };
+    </script>
+</body>
+
+</html>
