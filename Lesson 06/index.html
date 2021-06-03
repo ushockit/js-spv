@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item {
+            padding: 5px;
+            border: 1px solid black;
+            margin: 5px;
+        }
+        .item:hover {
+            background-color: rgba(240,240,240);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="items">
+        <!-- <div class="item">SOme item 1</div>
+        <div class="item">SOme item 2</div>
+        <div class="item">SOme item 3</div> -->
+    </div>
+    <script>
+        // local storage - https://learn.javascript.ru/localstorage
+        // session storage
+        // cookie
+
+        let obj = {
+            firstName: 'Vasya',
+            lastName: 'Pupkin',
+            birth: new Date(2000, 05, 12),
+            passport: {
+                series: 'AE',
+                number: '56981'
+            }
+        };
+
+        // // преобразование объекта в JSON
+        // let json = JSON.stringify(obj);
+        // console.log(json);
+
+        // // преобразование JSON строки в объект
+
+        // let resObj = JSON.parse(json);
+        // console.log(resObj);
+
+
+        // localStorage.setItem('username', 'user@gmail.com');
+        // localStorage.setItem('userInfo', JSON.stringify(obj));
+
+        // let resObj = JSON.parse(localStorage.getItem('userInfo'));
+        // console.log(resObj);
+
+
+
+        console.log(document.cookie);
+
+        //document.cookie = 'user-id=1';
+        //document.cookie = 'email=vas_2012@gmail.com';
+
+        function setCookie(key, value, expiresInHours) {
+            let currDate = new Date();
+            let expires = new Date(currDate.setHours(currDate.getHours() + expiresInHours));
+            document.cookie = `${key}=${value}; expires=${expires}`;
+        }
+        //setCookie('email', 'vasya@gmail.com', 3);
+
+        function parseCookie() {
+            let cookieMap = new Map();
+            document.cookie.split(/[; ]/)
+                .filter(s => Boolean(s))
+                .forEach(s => {
+                    let arr = s.split('=');
+                    cookieMap.set(arr[0], arr[1]);
+                });
+            return cookieMap;
+        }
+
+        let cookie = parseCookie();
+        console.log(cookie.get('email'));
+
+        if (!cookie.get('email')) {
+            setCookie('email', 'vasya@gmail.com', 3);
+            alert('Success set cookie');
+        }
+
+
+        const UI = {
+            items: document.getElementById('items')
+        };
+        let items = ['Item 1', 'Item 2', 'Item 3'];
+        
+
+        for(let i = 0 ; i < items.length; i++) {
+            // основной элемент
+            let divItem = document.createElement('div');
+            divItem.classList.add('item');
+
+            // вложенный элемент 'title'
+            let innerDivTitle = document.createElement('div');
+            innerDivTitle.classList.add('item-title');
+            innerDivTitle.innerText = `Title for ${items[i]}`;
+
+            // вложенный элемент 'description'
+            let innerDivDescription = document.createElement('div');
+            innerDivDescription.classList.add('item-description');
+            innerDivDescription.innerText = `Description for ${items[i]}`;
+
+
+            divItem.appendChild(innerDivTitle);
+            divItem.appendChild(innerDivDescription);
+
+            UI.items.appendChild(divItem);
+
+            divItem.onclick = function() {
+                console.log(this);
+                console.log(this.innerText);
+                // поиск элементов относительно элемента по которому кликнули
+                console.log(this.querySelector('.item-description'));
+                this.querySelector('.item-description').innerText = 'New text';
+            };
+        }
+    </script>
+</body>
+
+</html>
