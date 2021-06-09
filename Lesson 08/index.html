@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .circle {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            border-radius: 100%;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title">Hello</h1>
+    <h1 class="title">Hello</h1>
+    <h1 class="title">Hello</h1>
+    <h1 class="title">Hello</h1>
+    <h1 class="title">Hello</h1>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <li>Item 6</li>
+    </ul>
+    <button id="clear-list">Clear list</button>
+    <div class="circle"></div>
+    <button id="start-animate">Start animate</button>
+
+    <div class="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum deleniti, nam minus, nulla
+        tenetur adipisci cumque error nihil similique earum fugit vitae fugiat illum laudantium quo eligendi natus quis
+        omnis!</div>
+    <button id="hide-text">Hide</button>
+    <input type="text" value="Hello">
+    <script>
+        // https://metanit.com/web/jquery/
+        // https://api.jquery.com/
+        $(document).ready(() => {
+            // const listItems = document.querySelectorAll('#list > li');
+            // for(let i = 0; i < listItems.length; i++) {
+            //     listItems[i].onclick = (ev) => {
+            //         console.log(ev.target.innerText);
+            //     };
+            // }
+
+            // подписка на событие 'click' ко всем выбранным эл-м
+            $('#list > li').click((ev) => {
+                console.log(ev.target.innerText);
+            });
+
+            // добавление нового эл-та
+            $('#list').append('<li>New item</li>');
+
+            // явное измение стилей у эл-ов li
+            $('#list').add('li').css('color', 'red');
+            //$('#list > li').css('color', 'red');
+
+
+            $('#list > li').each((idx, elmt) => {
+                console.log('idx = ', idx, ' -> ', elmt);
+            });
+
+            $('#clear-list').click(() => {
+                // очистка списка
+                $('#list').empty();
+            });
+
+            $('.title').text('How are you?');
+            $('.title').first().text('I`am first');
+
+            $('#start-animate').click(() => {
+                $('.circle').animate({
+                    left: '50px',
+                    top: '+=50px',
+                    opacity: 0.5
+                }, 1000, function () {
+                    console.log();
+                    $(this).animate({
+                        width: (Number.parseInt($(this).css('width')) * 2) + 'px',
+                        height: (Number.parseInt($(this).css('height')) * 2) + 'px'
+                    }, 500);
+                });
+            });
+            $('#hide-text').click(() => {
+                // скрытие блока
+                // $('.text').hide();
+
+                // плавное скрытие/появлелние блока за 300ms
+                // $('.text').toggle(300);
+
+                // явное скрытие 
+                $('.text').fadeOut(300);
+            });
+
+
+            console.log($('input[type=text]').val());
+
+            // AJAX 'GET' query
+            // $.get('data.json', (data) => {
+            //     console.log(data);
+            // });
+
+            // $.getJSON('data.json', (data) => {
+            //     console.log(data);
+            // });
+
+
+            // циклический проход по переданному массиву
+            // $.each(document.querySelectorAll('#list > li'), (idx, elmt) => {
+            //     console.log(idx, elmt);
+            // });
+
+
+            const promise = new Promise((resolve, reject) => {
+                $.get('data.json', (data) => {
+                    // console.log('SUCCESS');
+                    // уведомляем об успешном завершении работы промиси
+                    // и передаем результат в ответ
+                    resolve(data);
+                }).fail(() => {
+                    // console.log('ERROR');
+                    // уведомляем об ошибке
+                    reject(data);
+                });
+            });
+
+            // promise.then((response) => {
+            //     console.log('Response', response);
+            // }).catch((err) => {
+            //     console.log(err);
+            // });
+
+
+            // promise.then((response) => {
+            //     return response.map((item) => Object.values(item))
+            // }).then((response) => {
+            //     console.log(response);
+            // }).catch((err) => {
+            //     console.log(err);
+            // });
+
+
+            async function dataQuery() {
+                try {
+                    const response = await promise;
+                    console.log(response);
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+
+            // dataQuery();
+
+            function resolveAfter2Seconds(x) {
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        resolve(x);
+                    }, 2000);
+                });
+            }
+
+            resolveAfter2Seconds('Hi, guys!!!').then((resp) => {
+                console.log(resp);
+            });
+
+        });
+    </script>
+</body>
+
+</html>
