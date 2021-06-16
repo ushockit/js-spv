@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./pickadate.js-3.6.2/lib/themes/default.css">
+    <link rel="stylesheet" href="./pickadate.js-3.6.2/lib/themes/default.date.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./pickadate.js-3.6.2/lib/picker.js"></script>
+    <script src="./pickadate.js-3.6.2/lib/picker.date.js"></script>
+
+    <script src="js/jquery.knob.min.js"></script>
+</head>
+
+<body>
+    <!-- http://beloweb.ru/javascript-jquery/10-kruteyshih-jquery-plaginov-dlya-vashego-sayta-besplatno.html -->
+    <input class="datepicker" type="date">
+    <button onclick="getDate()">Get date</button>
+
+    <input data-width="150" 
+        data-fgColor="#ffec03" 
+        data-skin="tron" 
+        data-thickness=".2"
+        data-displayPrevious=true 
+        type="text" 
+        value="75" 
+        class="dial">
+    <script>
+        // const $input = $('.datepicker').pickadate();
+        // const picker = $input.pickadate('picker');
+
+        // picker.on({
+        //     open: () => {
+        //         console.log('Open');
+        //         //alert('Open');
+        //     }
+        // });
+
+        // function getDate() {
+        //     console.log(picker.get('select'));
+        //     console.log(picker.get('highlight'));
+        //     console.log(picker.get('view'));
+        //     console.log(picker.get('open'));
+        // }
+        // picker.trigger('open');
+
+
+        $(".dial").knob();
+        // $('.dial').trigger(
+        //     'configure',
+        //     {
+        //         "min": 10,
+        //         "max": 40,
+        //         "fgColor": "#FF0000",
+        //         "skin": "tron",
+        //         "cursor": true
+        //     }
+        // );
+    </script>
+</body>
+
+</html>
